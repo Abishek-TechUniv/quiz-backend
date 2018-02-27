@@ -4,14 +4,17 @@ const models = require('../../models');
 
 
 const joinQuestionsAndAnswer = questions => new Promise((resolve, reject) => {
-  const questionsAndAns = questions.map(question => ({
-    questionId: question.questionId,
-    question: question.question,
-    optA: question.option1,
-    optB: question.option2,
-    optC: question.option3,
-    optD: question.option4,
-  }));
+  const questionsAndAns = questions.map((question) => {
+    const options = [];
+    Object.keys(question).forEach((key) => {
+      if (key.indexOf('option') === 0) { options.push(question[key]); }
+    });
+    return {
+      questionId: question.questionId,
+      question: question.question,
+      options,
+    };
+  });
 
   const questionAnsPromiseArr = [];
 

@@ -35,19 +35,13 @@ describe('test that joinQuestionsAndAnswer', () => {
       {
         question: 'What is the capital of India',
         questionId: 12,
-        option1: 'New Delhi',
-        option2: 'MP',
-        option3: 'UP',
-        option4: 'Bangalore',
+        options: ['New Delhi', 'MP', 'UP', 'Bangalore'],
       }])
       .then((questions) => {
         expect(questions).toEqual([{
           question: 'What is the capital of India',
           questionId: 12,
-          optA: 'New Delhi',
-          optB: 'MP',
-          optC: 'UP',
-          optD: 'Bangalore',
+          options: ['New Delhi', 'MP', 'UP', 'Bangalore'],
           correctAns: 'New Delhi',
         }]);
         done();
@@ -58,9 +52,15 @@ describe('test that joinQuestionsAndAnswer', () => {
 describe('test insertion', () => {
   test('should bulk insert question to the database', () => {
     insert([{
-      question: 'What is the capital of India', questionId: 12, option1: 'New Delhi', option2: 'MP', option3: 'UP', option4: 'Bangalore',
+      question: 'What is the capital of India',
+      questionId: 12,
+      options:
+      ['New Delhi', 'MP', 'UP', 'Bangalore'],
     }, {
-      question: 'What is the capital of Afghanistan', questionId: 23, option1: 'Kabul', option2: 'Tirana', option3: 'Algiers', option4: 'Andorra la Vella',
+      question: 'What is the capital of Afghanistan',
+      questionId: 23,
+      options:
+      ['New Delhi', 'MP', 'UP', 'Bangalore'],
     }]);
   });
 });
