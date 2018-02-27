@@ -54,7 +54,10 @@ const calculate = userName => models.responses.findAll({ where: { userName } })
     });
 
     return Promise.all(promiseArr)
-      .then(matchArr => matchArr.filter(x => x).length)
+      .then((matchArr) => {
+        const { length } = matchArr.filter(x => x);
+        return length;
+      })
       .catch(err => err);
   });
 module.exports = {

@@ -20,7 +20,7 @@ module.exports = [
       const { userName } = request.payload;
       calculate(userName)
         .then(ans => users.update({ score: ans }, { where: { userName } }))
-        .then(([ans]) => reply(ans).code(201))
+        .then(([noRows]) => reply(`${noRows} rows affected`).code(201))
         .catch(err => reply(err).code(500));
     },
   },
