@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "abishekaditya",
+    "password": null,
+    "database": "quiz_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "abishekaditya",
+    "password": null,
+    "database": "quiz_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

@@ -1,2 +1,3 @@
+const questions = require('./questions');
 
-module.exports = [].concat();
+module.exports = [].concat(questions);
