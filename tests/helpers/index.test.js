@@ -23,6 +23,8 @@ beforeAll(() => {
   server.inject(request);
   server.inject(responseRequest);
 });
+
+
 describe('test that joinQuestionsAndAnswer', () => {
   test('should return a promise', () => {
     expect(joinQuestionsAndAnswer([{}])).toBeInstanceOf(Promise);

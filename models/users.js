@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
+    score: {
+      type: DataTypes.INTEGER,
+    },
   }, {});
   return users;
 };

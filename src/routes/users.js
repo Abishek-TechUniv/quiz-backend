@@ -17,9 +17,27 @@ module.exports = [
     method: 'POST',
     path: '/calculate',
     handler: (request, reply) => {
-      calculate(request.payload.userName)
-        .then(ans => reply(ans).code(201))
+      const { userName } = request.payload;
+      calculate(userName)
+        .then(ans => users.update({ score: ans }, { where: { userName } }))
+        .then(([ans]) => reply(ans).code(201))
         .catch(err => reply(err).code(500));
+    },
+  },
+  {
+    method: 'GET',
+    path: '/scores',
+    handler: (request, reply) => {
+      users.findAll({
+        order: [
+          ['score', 'DESC'],
+        ],
+      })
+        .then((resultArr) => {
+          const resultOutput = resultArr.map(result =>
+            ({ userName: result.userName, score: result.score }));
+          reply(resultOutput).code(200);
+        });
     },
   },
 ];

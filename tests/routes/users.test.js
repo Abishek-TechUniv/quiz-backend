@@ -48,3 +48,27 @@ describe('calcuating result of user', () => {
     });
   });
 });
+
+describe('return scores', () => {
+  test('should return success', (done) => {
+    const request = {
+      method: 'GET',
+      url: '/scores',
+    };
+    server.inject(request, (reply) => {
+      expect(reply.statusCode).toEqual(200);
+      done();
+    });
+  });
+
+  test('should return array of objects', (done) => {
+    const request = {
+      method: 'GET',
+      url: '/scores',
+    };
+    server.inject(request, (reply) => {
+      expect(typeof reply.result).toEqual('object');
+      done();
+    });
+  });
+});
