@@ -8,8 +8,5 @@ module.exports = (sequelize, DataTypes) => {
     optD: DataTypes.STRING,
     correctAns: DataTypes.STRING,
   }, {});
-  questions.associate = function (models) {
-    // associations can be defined here
-  };
   return questions;
 };

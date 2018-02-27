@@ -1,5 +1,3 @@
-
-
 module.exports = (sequelize, DataTypes) => {
   const users = sequelize.define('users', {
     userName: {
@@ -8,8 +6,5 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
   }, {});
-  users.associate = function (models) {
-    // associations can be defined here
-  };
   return users;
 };

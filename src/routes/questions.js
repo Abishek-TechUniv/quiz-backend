@@ -22,8 +22,7 @@ module.exports = [
         .then(resultObj => resultObj.allQuestions)
         .then(allQuestions => joinQuestionsAndAnswer(allQuestions))
         .then(questionsWithAns => insert(questionsWithAns))
-        .then(() => reply('Populated the database').code(201))
-        .catch(err => reply(err).code(501));
+        .then(() => reply('Populated the database').code(201));
     },
   },
 ];

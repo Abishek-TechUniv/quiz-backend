@@ -39,7 +39,22 @@ const insert = (questions) => {
     .then(() => models.questions.bulkCreate(questions));
 };
 
+const calculate = userName => models.responses.findAll({ where: { userName } })
+  .then((respArr) => {
+    const promiseArr = [];
+    if (respArr.length === 0) throw new Error('User doesn\'t exist');
+    respArr.forEach(({ questionId, response }) => {
+      promiseArr.push(models.questions.findOne({
+        where:
+          { questionId, correctAns: response },
+      }));
+    });
+
+    return Promise.all(promiseArr)
+      .then(matchArr => matchArr.filter(x => x).length)
+      .catch(err => err);
+  });
 module.exports = {
-  joinQuestionsAndAnswer, insert,
+  joinQuestionsAndAnswer, insert, calculate,
 };
 
