@@ -21,13 +21,13 @@ module.exports = [
         where:
         { userName: request.payload.userName },
       })
-        .then((result) => {
+        .then((result) => { // BLOCKER
           const output = [];
           result.forEach((element) => {
             const { questionId, response } = element;
             output.push({ questionId, response });
           });
-          reply(output).code(200);
+          reply(output).code(201);
         });
     },
   },

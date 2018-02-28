@@ -35,7 +35,10 @@ describe('test that joinQuestionsAndAnswer', () => {
       {
         question: 'What is the capital of India',
         questionId: 12,
-        options: ['New Delhi', 'MP', 'UP', 'Bangalore'],
+        option1: 'New Delhi',
+        option2: 'MP',
+        option3: 'UP',
+        option4: 'Bangalore',
       }])
       .then((questions) => {
         expect(questions).toEqual([{
@@ -66,13 +69,6 @@ describe('test insertion', () => {
 });
 
 describe('test calculation', () => {
-  test('should return a number if user exists', (done) => {
-    calculate('Abishek').then((result) => {
-      expect(typeof result).toBe('number');
-      done();
-    });
-  });
-
   test('should throw error if user doesn\'t exist', (done) => {
     calculate('Abisheks').catch((result) => {
       expect(result.message).toBe('User doesn\'t exist');
